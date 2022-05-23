@@ -2,3 +2,7 @@
 *.npz
 *.png
 */.ipynb_checkpoints/*
+*/data/*
+*/__pycache__/*
+
+!*/results/*
