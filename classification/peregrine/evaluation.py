@@ -4,23 +4,23 @@ import pickle
 import numpy as np
 from SemanticTypeAnalyzer import SemanticTypeAnalyzer
 
-print("Done Importing")
+print("Load Training data...")
 
 with open('data_train.p', 'rb') as f:
     data_train = pickle.load(f)
 
-print("Done Loading training data")
+print("Intializing...")
 
 data = np.load('dataset.npz')
-X = data['X'][:1]
-y = data['y'][:1]
+X = data['X']
+y = data['y']
 
 analyzer = SemanticTypeAnalyzer(data_train)
 
-print("Initialized analyzer")
+print("Analyzing...")
 
 preds = analyzer.predict(X)
 
-np.savez('results_opt_test.npz', preds=preds, y=y)
+np.savez('results_interp_judge.npz', preds=preds, y=y)
 
 
