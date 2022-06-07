@@ -1,5 +1,5 @@
 # Claim Classification
-This folder contains all the code and data for the classifciation task
+This folder contains all the code and data for the classifciation task. All code is written in python and requires the packages listed in `requirements.txt`.
 
 ## Ipython Notebooks
 In this folder, there are several Ipython notebooks:
