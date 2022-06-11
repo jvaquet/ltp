@@ -1,3 +1,5 @@
+import argparse
+
 from base_prompt_engg import evaluate_base_prompt_engg, load_pipeline
 from baseline import *
 from preprocess_claim_identification import (convert_to_json,
@@ -6,7 +8,21 @@ from preprocess_claim_identification import (convert_to_json,
 from prompt_fine_tuning import *
 from utils import *
 
+def create_arg_parser():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-a",
+        "--account_id",
+        default="nouman-10",
+        type=str,
+        help="Account Id to save the model on",
+    )
+    args = parser.parse_args()
+    return args
+
 if __name__ == "__main__":
+    args = create_arg_parser()
+    
     print("Preprocessing data...")
     file_names = get_file_names()
     labeled_data = create_labeled_data(file_names)
@@ -106,5 +122,5 @@ if __name__ == "__main__":
     print(calculate_perplexity(model, tf_test_dataset))
 
     print("Evaluating the fine-tuned model...")
-    model = load_pipeline("nouman-10/robertabase-claims-2")
+    model = load_pipeline(f"{args.account_id}/robertabase-claims-2")
     evaluate_trained_model(model, X_test, y_test)
