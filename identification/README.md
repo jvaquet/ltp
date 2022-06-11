@@ -1,5 +1,4 @@
-# ML_Algorithms_For_Digit_Classification
-Comparison of various algorithms for Digit Classification
+# Claim Identification
 
 ### Table of Contents
 
